@@ -1,0 +1,2 @@
+# QAAuto
+Scripts de Automação
