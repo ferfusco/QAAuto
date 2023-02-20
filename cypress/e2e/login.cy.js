@@ -1,98 +1,41 @@
-describe("login Administrador", () => {
+import { locators } from "../support/locators_ClearSource";
+import { login } from "../support/commands.js";
 
-  const userAdm = 'admin@lc.dev'
-  const passwordAdm = 'Test123!'
 
-  it("login Admistrador test", () => {
+describe("Login's test", () => {
 
-      cy.visit('https://portal.qa.clearsource.app.lc.dev/')
-      cy.xpath('/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/div[1]/button')
-      .should('be.visible')
-      .click()
-      cy.xpath('/html/body/div[3]/div[4]/div/section/div/div/div/form/div[1]/div/input')
-      .should('be.visible')
-      .click()
-      cy.xpath('/html/body/div[3]/div[4]/div/section/div/div/div/form/div[1]/div/input')
-      .should('be.visible')
-      .type(userAdm)
-      cy.xpath('/html/body/div[3]/div[4]/div/section/div/div/div/form/div[2]/div/input')
-      .should('be.visible')
-      .click()
-      cy.xpath('/html/body/div[3]/div[4]/div/section/div/div/div/form/div[2]/div/input')
-      .should('be.visible')
-      .type(passwordAdm)
-      cy.xpath('/html/body/div[3]/div[4]/div/section/div/div/div/form/button')
-      .should('be.visible')
-      .click()
-      cy.xpath('/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/button')
-      .should('exist')
-      .contains('AD')
 
-  })
-})
+    it("login administrator", () => {
 
-describe("login Contractor", () => {
+        login(
 
-  const userAdm = 'ariadnersb@gmail.com'
-  const passwordAdm = 'Ary@060580'
+            locators.LOGIN_DATA.USER_ADM,
+            locators.LOGIN_DATA.PASSWORD_ADM
+            
+        )
 
-  it("login Contractor test", () => {
+    })
 
-      cy.visit('https://portal.qa.clearsource.app.lc.dev/')
-      cy.xpath('/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/div[1]/button')
-      .should('be.visible')
-      .click()
-      cy.xpath('/html/body/div[3]/div[4]/div/section/div/div/div/form/div[1]/div/input')
-      .should('be.visible')
-      .click()
-      cy.xpath('/html/body/div[3]/div[4]/div/section/div/div/div/form/div[1]/div/input')
-      .should('be.visible')
-      .type(userAdm)
-      cy.xpath('/html/body/div[3]/div[4]/div/section/div/div/div/form/div[2]/div/input')
-      .should('be.visible')
-      .click()
-      cy.xpath('/html/body/div[3]/div[4]/div/section/div/div/div/form/div[2]/div/input')
-      .should('be.visible')
-      .type(passwordAdm)
-      cy.xpath('/html/body/div[3]/div[4]/div/section/div/div/div/form/button')
-      .should('be.visible')
-      .click()
-      cy.xpath('/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/button')
-      .should('exist')
-      .contains('AR')
+    it("login contractor", () => {
 
-  })
-})
+        login(
+            
+            locators.LOGIN_DATA.USER_CONT,
+            locators.LOGIN_DATA.PASSWORD_CONT
+            
+        )
 
-describe("login Distributor", () => {
+    })
 
-  const userAdm = 'ariadner@lc.dev'
-  const passwordAdm = 'Test123!'
+    it("login distribuitor", () => {
 
-  it("login Distributor test", () => {
+        login(
+            
+            locators.LOGIN_DATA.USER_DIST,
+            locators.LOGIN_DATA.PASSWORD_DIST
+            
+        )
 
-      cy.visit('https://portal.qa.clearsource.app.lc.dev/')
-      cy.xpath('/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/div[1]/button')
-      .should('be.visible')
-      .click()
-      cy.xpath('/html/body/div[3]/div[4]/div/section/div/div/div/form/div[1]/div/input')
-      .should('be.visible')
-      .click()
-      cy.xpath('/html/body/div[3]/div[4]/div/section/div/div/div/form/div[1]/div/input')
-      .should('be.visible')
-      .type(userAdm)
-      cy.xpath('/html/body/div[3]/div[4]/div/section/div/div/div/form/div[2]/div/input')
-      .should('be.visible')
-      .click()
-      cy.xpath('/html/body/div[3]/div[4]/div/section/div/div/div/form/div[2]/div/input')
-      .should('be.visible')
-      .type(passwordAdm)
-      cy.xpath('/html/body/div[3]/div[4]/div/section/div/div/div/form/button')
-      .should('be.visible')
-      .click()
-      cy.xpath('/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/button')
-      .should('exist')
-      .contains('DS')
+    })
 
-  })
 })
