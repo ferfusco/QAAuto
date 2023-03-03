@@ -1,6 +1,6 @@
 import { locators } from "../support/locators_ClearSource";
 
-export const urlBase = 'https://portal.qa.clearsource.app.lc.dev/'
+export const baseUrl = 'https://portal.qa.clearsource.app.lc.dev/'
 
 export function login(user,password) {
 
@@ -16,7 +16,7 @@ export function login(user,password) {
         var check = locators.LOGIN_DATA.DIST_CHECK
     }
 
-    cy.visit(urlBase)
+    cy.visit(baseUrl)
 
     cy.xpath(locators.LOGIN.LOGIN_BUTON_HOME)
         .should('be.visible')
@@ -52,7 +52,7 @@ export function cart(state) {
 
     if(state == open){
 
-        cy.visit(urlBase)
+        cy.visit(baseUrl)
 
     cy.xpath(locators.CART.ICON_HOME)
         .should('be.visible')
@@ -77,14 +77,14 @@ export function cart(state) {
 
 export function allCategories() {
 
-    cy.visit(urlBase)
+    cy.visit(baseUrl)
 
     cy.xpath(locators.ALL_CATEGORIES.ALL_CATEGORIES_BUTTON_HOME)
     .should('be.visible')
     .contains('View All Categories')
     .click({ force: true })
 
-    const urlProducts = urlBase + 'products'
+    const urlProducts = baseUrl + 'products'
     cy.url()
     .should('be.equal', urlProducts)
 
@@ -109,7 +109,7 @@ export function explorerCategory(category_locator) {
     var url =         category_locator.SUB_CATEGORY_LINK
 
 
-    cy.visit(urlBase)
+    cy.visit(baseUrl)
 
     cy.xpath(xpathGroup)
     .should('be.visible')
@@ -119,7 +119,7 @@ export function explorerCategory(category_locator) {
     .should('be.visible')
     .click({ force: true })
 
-    var urltarget = urlBase + url
+    var urltarget = baseUrl + url
     cy.url()
     .should('be.equal', urltarget)
 
@@ -140,5 +140,74 @@ export function explorerCategory(category_locator) {
     .should('be.visible')
 
     return null
+
+}
+
+export function shopCategory(div) {
+
+    cy.viewport(1920, 1080)     
+
+        var button_home = locators.SHOP_CATEGORIES.BUTTON
+
+        var address_2 = Object.keys(div);
+
+        cy.log(address_2)
+
+        for (let j = 0; j < address_2.length; j++) {
+
+            var comp_2 = (address_2[j])
+
+            cy.log(comp_2)
+
+            var Button_test = div[comp_2]
+
+            var button_shop_cat = Button_test.BUTTON
+
+            var link = Button_test.LINK
+            
+            var category = Button_test.CATEGORY
+
+            var sub = Button_test.SUB
+            
+            cy.log(Button_test)
+
+            cy.visit(baseUrl);
+
+            cy.xpath(button_home)
+            .should('be.visible')
+            .click({ force: true });
+
+            cy.xpath(locators.SHOP_CATEGORIES.MENU)
+            .should('be.visible')
+
+            cy.xpath(button_shop_cat)
+            .scrollIntoView()
+            .click({ force: true });
+
+            var urltarget = baseUrl + link
+            cy.url()
+            .should('be.equal', urltarget)
+
+            cy.xpath('/html/body/div[1]/div/div[1]/div[3]/div/div[2]/div[3]/div[1]/div[1]/a')
+            .should('be.visible')
+            .click({ force: true });
+
+            if (sub != ""){
+
+                cy.xpath('/html/body/div[1]/div/div[1]/div[2]/div/div[2]/div[1]/div[2]/div[1]/div[1]/a')
+                .contains(Button_test.SUB)
+                .should('be.visible')
+                
+            }
+
+            cy.xpath('/html/body/div[1]/div/div[1]/div[2]/div/div[2]/div[1]/div[2]/div[1]/div[2]/a')
+            .contains(category)
+            .should('be.visible')
+        
+        }
+
+ //   }
+
+    
 
 }
