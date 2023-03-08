@@ -204,10 +204,75 @@ export function shopCategory(div) {
             .contains(category)
             .should('be.visible')
         
-        }
+        } 
 
- //   }
+}
 
+export function goToPortal(user,password) {
     
+    cy.viewport(1920, 1080)
 
+    login(user,password)
+
+    cy.xpath(locators.GO_TO_PORTAL.BUTTON)
+    .should('be.visible')
+    .click()
+
+    cy.url()
+    .should('contains', '/distributors')
+}
+
+export function Barlink(name) {
+
+    cy.viewport(1920, 1080)
+
+    cy.xpath(locators["GO_TO_PORTAL"][name]["BUTTON"])
+    .should('be.visible')
+    .click()
+
+    cy.url()
+    .should('contains', locators["GO_TO_PORTAL"][name]["URL"])
+
+}
+
+export function searchInput(){
+   
+    var address = locators["GO_TO_PORTAL"]["DISTRIBUITORS"]["ROW"]
+
+    for(let i = 1; i <= 10; i++){
+
+        var trSelector = address.RENDER + "/tr["+ i +"]" 
+
+        var line = 'line_'+i+"_"
+
+        for(let j = 1; j <= 6; j++){
+
+            var tdSelector = trSelector + "/td["+ j +"]"
+
+            var td
+
+            if(j == 1){
+                td =  "order" 
+            }if(j == 2){
+                td =  "name" 
+            }if(j == 3){
+                td =  "address" 
+            }if(j == 4){
+                td =  "contact_name" 
+            }if(j == 5){
+                td =  "phone_number" 
+            }if(j == 6){
+                td =  "status" 
+                tdSelector = tdSelector + "/span"
+            }
+            
+            var add = line + td
+
+            cy.xpath(tdSelector).invoke("text").as(add)
+            cy.get('@'+add)
+
+        }
+        
+    }    
+  
 }

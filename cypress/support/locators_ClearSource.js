@@ -17,6 +17,107 @@ export const locators = {
 
     },
 
+    LOGIN: {
+
+        LOGIN_BUTON_HOME: "/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/div[1]/button",
+        LOGIN_USER_FIELD:  '/html/body/div[3]/div[4]/div/section/div/div/div/form/div[1]/div/input',
+        LOGIN_PASSWORD_FIELD: '/html/body/div[3]/div[4]/div/section/div/div/div/form/div[2]/div/input',
+        LOGIN_BUTON: '/html/body/div[3]/div[4]/div/section/div/div/div/form/button',
+        LOGIN_CHECK: '/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/button/span',
+
+    },
+
+    
+    GO_TO_PORTAL:{
+
+        BUTTON:"/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/a",
+
+        HOME_BUTTON:"/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[1]/a/img",
+
+        PRODUCTS_IMPORTS:{
+
+            BUTTON:"/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[1]/div/a[1]",
+            URL:"admin/products/import",
+            FILE_INPUT:"/html/body/div[1]/div/div[1]/div[2]/div/div/label",
+
+        },
+
+        DISTRIBUITORS:{
+            
+            BUTTON:"/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[1]/div/a[2]",
+            NAME:"/html/body/div[1]/div/div[1]/div[2]/div[1]/p",
+            URL:"admin/distributors",
+            SEARCH_INPUT:"/html/body/div[1]/div/div[1]/div[2]/div[2]/div[1]/div/input",
+
+            STATUS:{
+
+                SELECT:"/html/body/div[1]/div/div[1]/div[2]/div[2]/div[2]/div/select",
+
+                OPTION_1:"/html/body/div[1]/div/div[1]/div[2]/div[2]/div[2]/div/select/option[1]",
+                NAME_1:"Status",
+
+                OPTION_2:"/html/body/div[1]/div/div[1]/div[2]/div[2]/div[2]/div/select/option[2]",
+                NAME_2:"Active",
+
+                OPTION_3:"/html/body/div[1]/div/div[1]/div[2]/div[2]/div[2]/div/select/option[3]",
+                NAME_3:"Inactive",
+            },
+
+            NEW_DISTRIBUITOR:{
+
+                BUTTON:"/html/body/div[1]/div/div[1]/div[2]/div[2]/div[2]/a/button",
+                URL:"admin/distributors/new",
+                ORDER:"/html/body/div[1]/div/div[1]/div[2]/table/tbody/tr[1]/td[1]",
+
+            },
+
+            ROW:{
+                RENDER:"/html/body/div[1]/div/div[1]/div[2]/table/tbody",
+                TR:                                                    "/tr[N]",
+                ORDER:                                                        "/td[1]",
+                NAME:                                                         "/td[2]",
+                ADDRESS:                                                      "/td[3]",
+                CONTACT_NAME:                                                 "/td[4]",
+                PHONE_NUMBER:                                                 "/td[5]",
+                STATUS:                                                       "/td[6]/span",
+                ROW_EXPECTED:"/html/body/div[1]/div/div[1]/div[2]/table/tbody/tr",
+                
+            },
+
+            KEBAB_1:{
+                
+                BUTTON:"/html/body/div[1]/div/div[1]/div[2]/table/tbody/tr[1]/td[7]/button",
+
+                DUPLICATE:{
+
+                    BUTTON:"/html/body/div[3]/div/div/button[1]",
+                    LINK:"admin/distributors/duplicate/1"
+
+                },
+
+                STATUS:{
+
+                    BUTTON:"/html/body/div[3]/div/div/button[2]",
+                    ALERT:"/html/body/div[2]/ul[5]/li/div/div/div/div",
+                    NAME_1:"Activate",
+                    NAME_2:"Deactivate",
+
+                },
+               
+            },
+            
+        },
+
+        CONTRACTORS:{
+
+            BUTTON:"/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[1]/div/a[3]",
+            URL:"admin/contractors",
+            NAME:"/html/body/div[1]/div/div[1]/div[2]/div[1]/p",
+
+        },
+
+    },
+
     SHOP_CATEGORIES: {
 
         BUTTON: "/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[1]/div/button",
@@ -911,16 +1012,6 @@ export const locators = {
 
         }
   
-    },
-
-    LOGIN: {
-
-        LOGIN_BUTON_HOME: "/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/div[1]/button",
-        LOGIN_USER_FIELD:  '/html/body/div[3]/div[4]/div/section/div/div/div/form/div[1]/div/input',
-        LOGIN_PASSWORD_FIELD: '/html/body/div[3]/div[4]/div/section/div/div/div/form/div[2]/div/input',
-        LOGIN_BUTON: '/html/body/div[3]/div[4]/div/section/div/div/div/form/button',
-        LOGIN_CHECK: '/html/body/div[1]/div/div[1]/div[1]/div[1]/div/div[2]/button/span',
-
     },
 
     CART: {
