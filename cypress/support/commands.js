@@ -235,7 +235,7 @@ export function Barlink(name) {
 
 }
 
-export function searchInput(){
+export function rowColect(){
    
     var address = locators["GO_TO_PORTAL"]["DISTRIBUITORS"]["ROW"]
 
@@ -269,10 +269,50 @@ export function searchInput(){
             var add = line + td
 
             cy.xpath(tdSelector).invoke("text").as(add)
-            cy.get('@'+add)
 
-        }
+        }   
         
     }    
   
+}
+
+export function searchInput(){
+
+    for(let k = 1;k <= 10; k++){
+
+        var line_0 = 'line_'+ k +"_"
+
+            var col =  "name" 
+
+            var ender = "@" + line_0 + col
+
+            var trSecond 
+
+            var tdSecond
+            
+
+            cy.get(ender).then(srtText_1 => {   // unwrapping happens here
+
+                console.log(srtText_1)             // check that the text was captured
+
+                cy.get('input[class="chakra-input css-s1lt0a"]').type(srtText_1);
+
+                cy.wait(1000)
+
+                trSecond = locators["GO_TO_PORTAL"]["DISTRIBUITORS"]["ROW"]['RENDER'] + "/tr" 
+
+                tdSecond = trSecond + '/td[2]'
+
+                cy.xpath(tdSecond).invoke("text").should('be.equal',srtText_1)
+                
+                cy.get('input[class="chakra-input css-s1lt0a"]').clear()
+
+                cy.xpath(locators.GO_TO_PORTAL.DISTRIBUITORS.BUTTON).click()
+
+            })
+
+        
+ 
+    }
+
 }

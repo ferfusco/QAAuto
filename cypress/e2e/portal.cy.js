@@ -1,5 +1,5 @@
 import { locators } from "../support/locators_ClearSource";
-import { searchInput ,goToPortal, Barlink } from "../support/commands.js";
+import { rowColect, searchInput ,goToPortal, Barlink } from "../support/commands.js";
 
 
 describe("go to admin portal test", () => {
@@ -17,9 +17,9 @@ describe("go to admin portal test", () => {
 
         Barlink("DISTRIBUITORS")
 
+        rowColect()
+        
         searchInput()
-
-
 
     })
     
