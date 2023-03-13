@@ -81,6 +81,8 @@ export const locators = {
                 PHONE_NUMBER:                                                 "/td[5]",
                 STATUS:                                                       "/td[6]/span",
                 ROW_EXPECTED:"/html/body/div[1]/div/div[1]/div[2]/table/tbody/tr",
+                NEXT:"/html/body/div[1]/div/div[1]/div[2]/div[3]/button[2]",
+                BACK:"/html/body/div[1]/div/div[1]/div[2]/div[3]/button[1]",
                 
             },
 

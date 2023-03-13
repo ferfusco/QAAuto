@@ -236,83 +236,157 @@ export function Barlink(name) {
 }
 
 export function rowColect(){
-   
+    
+    let logLine = []
+
     var address = locators["GO_TO_PORTAL"]["DISTRIBUITORS"]["ROW"]
 
-    for(let i = 1; i <= 10; i++){
+    cy.xpath(address.NEXT).then($btn => {
 
-        var trSelector = address.RENDER + "/tr["+ i +"]" 
+        for(let p = 1; p <= 2; p++){
 
-        var line = 'line_'+i+"_"
+            if (!($btn.attr('disabled'))) {
 
-        for(let j = 1; j <= 6; j++){
+                if(p != 1){
 
-            var tdSelector = trSelector + "/td["+ j +"]"
+                    cy.xpath(address.NEXT).click({ force: true })
 
-            var td
+                    cy.wait(1000)
 
-            if(j == 1){
-                td =  "order" 
-            }if(j == 2){
-                td =  "name" 
-            }if(j == 3){
-                td =  "address" 
-            }if(j == 4){
-                td =  "contact_name" 
-            }if(j == 5){
-                td =  "phone_number" 
-            }if(j == 6){
-                td =  "status" 
-                tdSelector = tdSelector + "/span"
+                }
+
+                cy.xpath(address.RENDER).xpath("./Tr").then(rowRender => {
+
+                    let h = logLine.length
+
+                    cy.log(h)
+
+                    for( let i = 1 ; i <=  rowRender.length; i++){
+
+                        var trSelector = address.RENDER + "/tr["+ i +"]" 
+
+                        var k = i + h
+
+                        var line = 'line_'+k+"_"
+
+                        for(let j = 1; j <= 6; j++){
+
+                            var tdSelector = trSelector + "/td["+ j +"]"
+
+                            var td
+
+                            if(j == 1){
+                                td =  "order" 
+                            }if(j == 2){
+                                td =  "name" 
+                            }if(j == 3){
+                                td =  "address" 
+                            }if(j == 4){
+                                td =  "contact_name" 
+                            }if(j == 5){
+                                td =  "phone_number" 
+                            }if(j == 6){
+                                td =  "status" 
+                                tdSelector = tdSelector + "/span"
+                            }
+                            
+                            var add = line + td
+
+                            
+                            
+                            cy.xpath(tdSelector).invoke("text").as(add)
+
+                            if(j == 2){
+
+                                logLine.push(add)
+                                
+                                var ender = "@" + add
+
+                                var trSecond
+
+                                var tdSecond
+
+
+                                cy.get(ender).then(srtText_1 => {   // unwrapping happens here
+
+                                    console.log(srtText_1)             // check that the text was captured
+
+                                    cy.get('input[class="chakra-input css-s1lt0a"]').type(srtText_1);
+
+                                    cy.wait(1000)
+
+                                    trSecond = locators["GO_TO_PORTAL"]["DISTRIBUITORS"]["ROW"]['RENDER'] + "/tr"
+
+                                    tdSecond = trSecond + '/td[2]'
+
+                                    cy.xpath(tdSecond).invoke("text").should('be.equal', srtText_1)
+
+                                    cy.get('input[class="chakra-input css-s1lt0a"]').clear()
+
+                                    cy.xpath(locators.GO_TO_PORTAL.DISTRIBUITORS.BUTTON).click()
+
+                                })
+
+                            }
+                        }   
+                        
+                    }
+
+                })
+
             }
-            
-            var add = line + td
 
-            cy.xpath(tdSelector).invoke("text").as(add)
+        }
 
-        }   
-        
-    }    
-  
+    })
+
+    return logLine
+
 }
 
-export function searchInput(){
+/*export function searchInput(){
 
-    for(let k = 1;k <= 10; k++){
+    cy.xpath(locators.GO_TO_PORTAL.DISTRIBUITORS.BUTTON).click()
 
-        var line_0 = 'line_'+ k +"_"
+    cy.wait(1000)
 
-            var col =  "name" 
+    for (let k = 1; k <= 15; k++) {
 
-            var ender = "@" + line_0 + col
+        var line_0 = 'line_' + k + "_"
 
-            var trSecond 
+        var col = "name"
 
-            var tdSecond
-            
+        var ender = "@" + line_0 + col
 
-            cy.get(ender).then(srtText_1 => {   // unwrapping happens here
+        var trSecond
 
-                console.log(srtText_1)             // check that the text was captured
+        var tdSecond
 
-                cy.get('input[class="chakra-input css-s1lt0a"]').type(srtText_1);
 
-                cy.wait(1000)
+        cy.get(ender).then(srtText_1 => {   // unwrapping happens here
 
-                trSecond = locators["GO_TO_PORTAL"]["DISTRIBUITORS"]["ROW"]['RENDER'] + "/tr" 
+            console.log(srtText_1)             // check that the text was captured
 
-                tdSecond = trSecond + '/td[2]'
+            cy.get('input[class="chakra-input css-s1lt0a"]').type(srtText_1);
 
-                cy.xpath(tdSecond).invoke("text").should('be.equal',srtText_1)
-                
-                cy.get('input[class="chakra-input css-s1lt0a"]').clear()
+            cy.wait(1000)
 
-                cy.xpath(locators.GO_TO_PORTAL.DISTRIBUITORS.BUTTON).click()
+            trSecond = locators["GO_TO_PORTAL"]["DISTRIBUITORS"]["ROW"]['RENDER'] + "/tr"
 
-            })
+            tdSecond = trSecond + '/td[2]'
 
-        
- 
+            cy.xpath(tdSecond).invoke("text").should('be.equal', srtText_1)
+
+            cy.get('input[class="chakra-input css-s1lt0a"]').clear()
+
+            cy.xpath(locators.GO_TO_PORTAL.DISTRIBUITORS.BUTTON).click()
+
+        })
+
     }
+}*/
 
-}
+
+
+
+
