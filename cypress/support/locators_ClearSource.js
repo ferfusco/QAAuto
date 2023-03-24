@@ -86,14 +86,17 @@ export const locators = {
                 
             },
 
-            KEBAB_1:{
+            KEBAB:{
                 
-                BUTTON:"/html/body/div[1]/div/div[1]/div[2]/table/tbody/tr[1]/td[7]/button",
+                BUTTON:"/html/body/div[1]/div/div[1]/div[2]/table/tbody//tr[1]/td[7]/button",
 
                 DUPLICATE:{
 
                     BUTTON:"/html/body/div[3]/div/div/button[1]",
-                    LINK:"admin/distributors/duplicate/1"
+                           
+                    LINK:"admin/distributors/duplicate/",
+
+                    BACK:"/html/body/div[1]/div/div[1]/div[2]/button/p"
 
                 },
 

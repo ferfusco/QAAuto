@@ -1,13 +1,21 @@
 import { locators } from "../support/locators_ClearSource";
-import { rowColect ,goToPortal, Barlink } from "../support/commands.js";
+import { aliasRowConstruct, SearchNames, goToPortal, Barlink, buttonPage, kebab } from "../support/commands.js";
 
 
 describe("go to admin portal test", () => {
 
 
+    
     it("go to admin portal", () => {
 
-        var adress = locators.LOGIN_DATA
+        let adress = locators.LOGIN_DATA
+
+        goToPortal(adress.USER_ADM,adress.PASSWORD_ADM)
+    })
+
+    it("redirect check", () => {
+
+        let adress = locators.LOGIN_DATA
 
         goToPortal(adress.USER_ADM,adress.PASSWORD_ADM)
 
@@ -17,9 +25,39 @@ describe("go to admin portal test", () => {
 
         Barlink("DISTRIBUITORS")
 
-        rowColect()
+    })
+    
+    it("back & next, search, status", () => {
+
+        let adress = locators.LOGIN_DATA
+
+        goToPortal(adress.USER_ADM,adress.PASSWORD_ADM)
+
+        Barlink("DISTRIBUITORS")
         
-        //searchInput()
+        buttonPage("next")
+
+        buttonPage("back")
+
+        aliasRowConstruct()
+
+        SearchNames("Inactive")
+
+        SearchNames("Active")
+
+    })
+
+    it("kebab", () => {
+
+        let adress = locators.LOGIN_DATA
+
+        goToPortal(adress.USER_ADM,adress.PASSWORD_ADM)
+
+        Barlink("DISTRIBUITORS")
+        
+        kebab("Duplicate")
+
+        kebab("State")
 
     })
     
